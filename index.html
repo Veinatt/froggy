@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Открытка для любимки</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Caveat", cursive;
+        background: #f4e5bc;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        overflow: hidden;
+      }
+
+      .map-container {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+      }
+
+      .map-container img {
+        width: 100%;
+        max-width: 1200px;
+        object-fit: cover;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 800px;
+      }
+
+      h1 {
+        font-size: clamp(1.5rem, 5vw, 4rem);
+        font-weight: 700;
+        color: #2e4258;
+        margin-bottom: 2rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        line-height: 1.2;
+      }
+
+      .message {
+        font-size: clamp(1rem, 3vw, 1.8rem);
+        color: #2e4258;
+        line-height: 1.6;
+        padding: 2rem;
+        font-weight: 600;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(3px);
+      }
+
+      .message p {
+        margin-bottom: 0.5rem;
+      }
+
+      .message p:last-child {
+        margin-bottom: 0;
+      }
+
+      .frog-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        width: 80px;
+        height: 80px;
+      }
+
+      .frog-svg {
+        width: 100%;
+        height: 100%;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+      }
+
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 1rem;
+        }
+
+        .message {
+          padding: 1.5rem;
+        }
+
+        .frog-container {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .message {
+          padding: 1rem;
+          font-size: 1.2rem;
+        }
+        .map-container {
+          width: 100%;
+          position: relative;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1;
+        }
+        h1 {
+          margin-bottom: 1rem;
+        }
+        .map-container img {
+          width: 100%;
+          max-width: 300px;
+          object-fit: cover;
+        }
+        .frog-container {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="map-container">
+        <img src="europe.png" alt="" />
+        <div class="frog-container" id="frog">
+          <svg
+            class="frog-svg"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ellipse cx="50" cy="60" rx="35" ry="25" fill="#4CAF50" />
+            <ellipse cx="35" cy="45" rx="8" ry="10" fill="#4CAF50" />
+            <ellipse cx="65" cy="45" rx="8" ry="10" fill="#4CAF50" />
+            <circle cx="35" cy="40" r="3" fill="white" />
+            <circle cx="65" cy="40" r="3" fill="white" />
+            <circle cx="35" cy="40" r="1" fill="black" />
+            <circle cx="65" cy="40" r="1" fill="black" />
+            <path
+              d="M40 70 Q50 75 60 70"
+              stroke="#2E7D32"
+              stroke-width="2"
+              fill="none"
+            />
+            <ellipse cx="30" cy="55" rx="2" ry="4" fill="#4CAF50" />
+            <ellipse cx="70" cy="55" rx="2" ry="4" fill="#4CAF50" />
+          </svg>
+        </div>
+      </div>
+      <div class="content">
+        <div class="message">
+          <h1>Счастливого пути, моя дорогая!</h1>
+          <p>
+            Очень надеюсь, что дорога пройдет на отлично и вы легко вздохнете
+            после всех трудностей на пути!
+          </p>
+          <p>
+            Пусть это путешествие принесет тебе массу ярких впечатлений и
+            незабываемых моментов.
+          </p>
+          <p>
+            Помни, что где бы ты ни была, мое сердце всегда с тобой. Возвращайся
+            скорее, я буду скучать!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        gsap.registerPlugin(MotionPathPlugin);
+        const frog = document.getElementById("frog");
+
+        function getPositions() {
+          if (window.innerWidth <= 768) {
+            return {
+              start: { x: 70, y: -20 },
+              end: { x: -95, y: 95 },
+            };
+          } else {
+            return {
+              start: { x: 280, y: -80 },
+              end: { x: -380, y: 370 },
+            };
+          }
+        }
+
+        const positions = getPositions();
+
+        gsap.set(frog, {
+          x: positions.start.x,
+          y: positions.start.y,
+        });
+
+        function createParabolicJump(start, end, height) {
+          const controlPoint = {
+            x: (start.x + end.x) / 2,
+            y: Math.min(start.y, end.y) - height,
+          };
+
+          return [
+            { x: start.x, y: start.y },
+            { x: controlPoint.x, y: controlPoint.y },
+            { x: end.x, y: end.y },
+          ];
+        }
+
+        const jump1End = {
+          x: 150,
+          y: -30,
+        };
+
+        const jump2End = {
+          x: -100,
+          y: 160,
+        };
+
+        const jump1EndMob = {
+          x: 35,
+          y: -5,
+        };
+
+        const jump2EndMob = {
+          x: -20,
+          y: 40,
+        };
+
+        if (window.innerWidth <= 768) {
+          const jump1Path = createParabolicJump(
+            positions.start,
+            jump1EndMob,
+            30
+          );
+
+          const jump2Path = createParabolicJump(jump1EndMob, jump2EndMob, 40);
+
+          const jump3Path = createParabolicJump(jump2EndMob, positions.end, 50);
+          gsap
+            .timeline()
+            .to(frog, {
+              motionPath: {
+                path: jump1Path,
+                type: "quadratic",
+              },
+              duration: 1,
+              ease: "power1.inOut",
+            })
+            .to(frog, {
+              motionPath: {
+                path: jump2Path,
+                type: "quadratic",
+              },
+              duration: 1,
+              ease: "power1.inOut",
+            })
+            .to(frog, {
+              motionPath: {
+                path: jump3Path,
+                type: "quadratic",
+              },
+              duration: 1,
+              ease: "power1.inOut",
+            });
+        } else {
+          const jump1Path = createParabolicJump(positions.start, jump1End, 30);
+
+          const jump2Path = createParabolicJump(jump1End, jump2End, 40);
+
+          const jump3Path = createParabolicJump(jump2End, positions.end, 50);
+          gsap
+            .timeline()
+            .to(frog, {
+              motionPath: {
+                path: jump1Path,
+                type: "quadratic",
+              },
+              duration: 1,
+              ease: "power1.inOut",
+            })
+            .to(frog, {
+              motionPath: {
+                path: jump2Path,
+                type: "quadratic",
+              },
+              duration: 1,
+              ease: "power1.inOut",
+            })
+            .to(frog, {
+              motionPath: {
+                path: jump3Path,
+                type: "quadratic",
+              },
+              duration: 1,
+              ease: "power1.inOut",
+            });
+        }
+
+        window.addEventListener("resize", function () {
+          const newPositions = getPositions();
+          gsap.set(frog, {
+            x: newPositions.start.x,
+            y: newPositions.start.y,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
